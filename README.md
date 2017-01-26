@@ -1,2 +1,2 @@
 # duoshuo2typecho-plugin
-多说评论批量导入typecho插件
+多说评论批量导入typecho插件（先占坑）
