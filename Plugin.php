@@ -19,7 +19,7 @@ class Duoshuo2typecho_Plugin implements Typecho_Plugin_Interface
     public static function activate()
     {
         Helper::addPanel(1, 'Duoshuo2typecho/Duoshuo2typecho.php', '多说评论导入Typecho', '多说评论转Typecho', 'administrator');
-        return _t('请进入 "控制台 > 多说评论导入Typecho" 进一步操作');
+        return _t('请进入 "控制台 > 多说评论导入Typecho" 进行进一步的操作');
 
     }
 
