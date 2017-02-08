@@ -18,7 +18,8 @@ class Duoshuo2typecho_Plugin implements Typecho_Plugin_Interface
      */
     public static function activate()
     {
-        Helper::addPanel(1, 'Duoshuo2typecho/Duoshuo2typecho.php', '多说评论导入Typecho', '多说评论转Typecho', 'administrator');
+        Helper::addAction('Duoshuo2typecho', 'Duoshuo2typecho_Action');
+        Helper::addPanel(1, 'Duoshuo2typecho/panel.php', '多说评论导入Typecho', '多说评论导入Typecho', 'administrator');
         return _t('请进入 "控制台 > 多说评论导入Typecho" 进行进一步的操作');
 
     }
@@ -33,7 +34,8 @@ class Duoshuo2typecho_Plugin implements Typecho_Plugin_Interface
      */
     public static function deactivate()
     {
-        Helper::removePanel(1, 'Duoshuo2typecho/Duoshuo2typecho.php');
+        Helper::removeAction('Duoshuo2typecho');
+        Helper::removePanel(1, 'Duoshuo2typecho/panel.php');
     }
 
     /**
