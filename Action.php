@@ -53,20 +53,22 @@ class Duoshuo2typecho_Action extends Typecho_Widget implements Widget_Interface_
                 $parent = $db->fetchRow($db->select('coid')->from('table.comments')->where('post_id=?', $parentId));
                 if (is_array($parent)) $data['parent'] = intval($parent['coid']);
             }
-            $haveComment = $db->fetchRow($db->select('coid')->from('table.comments')->where('post_id=?', $data['post_id'])
+            $haveComment = $db->fetchRow($db->select('coid')->from('table.comments')
                                                     ->where('text=?', $data['text'])->where('author=?', $data['author'])
                                                     ->where('created=?', $data['created']));
             if (empty($haveComment)) {
+                //如果为非重复评论，则插入到评论表里
                 $insert = $db->insert('table.comments')->rows($data);
                 $insertId = $db->query($insert);
                 $totalCount ++;
             } else {
+                //若已有重复评论，则不做插入动作，并计数
                 $repeatCount ++;
             }
         }
         unset($this->postsArr,$this->threadsArr);
         unlink($this->filePath); //删除上传的json文件
-        $this->widget('Widget_Notice')->set(_t('评论导入成功，共计 ' . $totalCount . ' 条，已过滤重复评论 ' .$repeatCount. ' 条。'), NULL, 'success');
+        $this->widget('Widget_Notice')->set(_t('评论已导入成功，共计 ' . $totalCount . ' 条，过滤重复评论 ' .$repeatCount. ' 条。'), NULL, 'success');
         $this->response->goBack();
     }
 
