@@ -2,7 +2,7 @@
 
 class Duoshuo2typecho_Action extends Typecho_Widget implements Widget_Interface_Do
 {
-    private $pluginPat; //插件路径
+    private $pluginPath; //插件路径
     private $filePath;  //上传文件路径
     private $threadsArr;  //文章数组
     private $postsArr;  //评论数组
