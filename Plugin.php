@@ -23,7 +23,7 @@ class Duoshuo2typecho_Plugin implements Typecho_Plugin_Interface
             $result = '启用成功，请进入 "<a href="extending.php?panel=Duoshuo2typecho%2Fpanel.php">控制台 > 多说评论导入Typecho</a>" 进行进一步操作';
         } catch (Typecho_Db_Exception $e) {
             $code = $e->getCode();
-            if (1050 == $code || 1062 == $code || 1060 == $code) {
+            if ('42S21' == $code || 1050 == $code || 1062 == $code || 1060 == $code) {
                 $result = '启用成功，请进入 "<a href="extending.php?panel=Duoshuo2typecho%2Fpanel.php">控制台 > 多说评论导入Typecho</a>" 进行进一步操作';
             } else {
                 throw new Typecho_Plugin_Exception(_t('插件启用失败，数据库操作时发生了一些问题'.$code));
