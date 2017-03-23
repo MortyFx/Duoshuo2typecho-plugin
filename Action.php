@@ -38,14 +38,14 @@ class Duoshuo2typecho_Action extends Typecho_Widget implements Widget_Interface_
             $data = array(
                 'post_id' => intval($post['post_id']),
                 'created' => strtotime($post['created_at']),
-                'author' => $this->removeEmoji($post['author_name']),
+                'author' => $post['author_name'],
                 'authorId' => $post['author_name'] == $this->adminName ? 1 : 0,
                 'ownerId' => 1,
                 'mail' => $post['author_email'],
                 'url' => $post['author_url'],
                 'ip' => $post['ip'],
                 'agent' => 'Duoshuo2typecho Plugin',
-                'text' => $this->removeEmoji($post['message']),
+                'text' => $post['message'],
                 'type' => 'comment',
                 'status' => 'approved',
             );
@@ -123,7 +123,7 @@ class Duoshuo2typecho_Action extends Typecho_Widget implements Widget_Interface_
     /**
      * 移除Emoji
      */
-    public function removeEmoji($$str)
+    public function removeEmoji($str)
     {
           return preg_replace('/([0-9|#][\x{20E3}])|[\x{00ae}|\x{00a9}|\x{203C}|\x{2047}|\x{2048}|\x{2049}|\x{3030}|\x{303D}|\x{2139}|\x{2122}|\x{3297}|\x{3299}][\x{FE00}-\x{FEFF}]?|[\x{2190}-\x{21FF}][\x{FE00}-\x{FEFF}]?|[\x{2300}-\x{23FF}][\x{FE00}-\x{FEFF}]?|[\x{2460}-\x{24FF}][\x{FE00}-\x{FEFF}]?|[\x{25A0}-\x{25FF}][\x{FE00}-\x{FEFF}]?|[\x{2600}-\x{27BF}][\x{FE00}-\x{FEFF}]?|[\x{2900}-\x{297F}][\x{FE00}-\x{FEFF}]?|[\x{2B00}-\x{2BF0}][\x{FE00}-\x{FEFF}]?|[\x{1F000}-\x{1F6FF}][\x{FE00}-\x{FEFF}]?/u', '', $str);
 
