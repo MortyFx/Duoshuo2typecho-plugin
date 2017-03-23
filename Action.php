@@ -38,14 +38,14 @@ class Duoshuo2typecho_Action extends Typecho_Widget implements Widget_Interface_
             $data = array(
                 'post_id' => intval($post['post_id']),
                 'created' => strtotime($post['created_at']),
-                'author' => $post['author_name'],
+                'author' => $this->removeEmoji($post['author_name']),
                 'authorId' => $post['author_name'] == $this->adminName ? 1 : 0,
                 'ownerId' => 1,
                 'mail' => $post['author_email'],
                 'url' => $post['author_url'],
                 'ip' => $post['ip'],
                 'agent' => 'Duoshuo2typecho Plugin',
-                'text' => $post['message'],
+                'text' => $this->removeEmoji($post['message']),
                 'type' => 'comment',
                 'status' => 'approved',
             );
