@@ -4,7 +4,7 @@
  *
  * @package Duoshuo2typecho
  * @author 大袋鼠
- * @version 1.0.0
+ * @version 1.0.1
  * @link https://muguang.me/
  */
 class Duoshuo2typecho_Plugin implements Typecho_Plugin_Interface
